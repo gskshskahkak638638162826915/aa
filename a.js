@@ -19,7 +19,7 @@ app.use(express.static('./up'));
       addr: 6381, 
       authtoken:'2VTpkw2Lk0BazrBP97LPU3huZad_6VJjPWQ8nrzi1t9K2ZT5z'// Port number of the service you want to expose
     });
-})
+})()
 
 setInterval(()=>{
   axios.get('https://hsgsksgkahskaha738362826825.onrender.com').then(()=>{
