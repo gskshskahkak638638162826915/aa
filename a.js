@@ -23,7 +23,7 @@ app.set('view engine','ejs');
 setInterval(()=>{
   axios.get('https://google.com').then(()=>{
     console.log('req successful');
-  }).catch(()={
+  }).catch(()=>{
     console.log('error');
   })
 },120000);
