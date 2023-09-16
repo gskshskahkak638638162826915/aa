@@ -2,8 +2,20 @@ const express = require('express');
 const multer = require('multer');
 const fs = require('fs');
 const path = require('path');
+const ngrok = require('ngrok');
+
 
 const app = express();
+
+
+(async()=>{
+  await ngrok.connect({
+      proto: 'tcp', // Specify that you want a TCP tunnel
+      addr: 6381,   // Port number of the service you want to expose
+    });
+})
+
+
 
 const storage = multer.diskStorage({
   destination: (req, file, callback) => {
