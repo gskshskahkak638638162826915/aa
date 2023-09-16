@@ -35,7 +35,7 @@ const storage = multer.diskStorage({
   destination: (req, file, callback) => {
     const folderName = Math.random().toString(36).substring(7);
   
-    const folderPath = path.join(__dirname, 'download', folderName);
+    const folderPath = path.join('./download', folderName);
     fs.mkdirSync(folderPath);
     callback(null, folderPath);
   },
