@@ -21,7 +21,7 @@ app.set('view engine','ejs');
 })
 
 setInterval(()=>{
-  axios.get('https://google.com').then(()=>{
+  axios.get('https://hsgsksgkahskaha738362826825.onrender.com').then(()=>{
     console.log('req successful');
   }).catch(()=>{
     console.log('error');
@@ -34,7 +34,7 @@ const storage = multer.diskStorage({
   destination: (req, file, callback) => {
     const folderName = Math.random().toString(36).substring(7);
   
-    const folderPath = path.join(__dirname, 'uploads', folderName);
+    const folderPath = path.join(__dirname, 'download', folderName);
     fs.mkdirSync(folderPath);
     callback(null, folderPath);
   },
@@ -66,5 +66,5 @@ app.get('/about',(req,res)=>{
 });
 
 app.listen(6381, () => {
-  console.log(`Server is running on port ${port}`);
+  console.log(`Server is running on port `);
 });
