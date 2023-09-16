@@ -6,7 +6,10 @@ const ngrok = require('ngrok');
 const axios = require('axios');
 
 
+
 const app = express();
+
+app.set('view engine','ejs');
 
 
 (async()=>{
@@ -42,13 +45,22 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage });
 
+app.get('/',(req,res)=>{
+  res.render('home',{info:''});
+});
+
+
 app.post('/', upload.single('file'), (req, res) => {
   if (!req.file) {
     return res.status(400).send('No file uploaded.');
   }
 
   const filePath = path.join(req.file.destination, req.file.filename);
-  res.status(200).send(filePath);
+  
+});
+
+app.get('/about',(req,res)=>{
+  res.render('about');
 });
 
 app.listen(6381, () => {
