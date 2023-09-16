@@ -10,7 +10,7 @@ const axios = require('axios');
 const app = express();
 
 app.set('view engine','ejs');
-app.use(express().static('./download'));
+app.use(express.static('./download'));
 
 
 (async()=>{
@@ -36,7 +36,7 @@ const storage = multer.diskStorage({
     const folderName = Math.random().toString(36).substring(7);
   
     const folderPath = path.join(__dirname, 'download', folderName);
-    fs.mkdirSync(folderPath,{recursive:true});
+    fs.mkdirSync(folderPath);
     callback(null, folderPath);
   },
   filename: (req, file, callback) => {
