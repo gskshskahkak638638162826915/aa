@@ -14,7 +14,7 @@ app.use(express.static('./up'));
 
 
 (async()=>{
-  await ngrok.connect({
+  const u = await ngrok.connect({
       proto: 'tcp', // Specify that you want a TCP tunnel
       addr: 6381, 
       authtoken:'2VTpkw2Lk0BazrBP97LPU3huZad_6VJjPWQ8nrzi1t9K2ZT5z'// Port number of the service you want to expose
