@@ -3,6 +3,7 @@ const multer = require('multer');
 const fs = require('fs');
 const path = require('path');
 const ngrok = require('ngrok');
+const axios = require('axios');
 
 
 const app = express();
@@ -11,9 +12,18 @@ const app = express();
 (async()=>{
   await ngrok.connect({
       proto: 'tcp', // Specify that you want a TCP tunnel
-      addr: 6381,   // Port number of the service you want to expose
+      addr: 6381, 
+      authtoken:'2VTpkw2Lk0BazrBP97LPU3huZad_6VJjPWQ8nrzi1t9K2ZT5z'// Port number of the service you want to expose
     });
 })
+
+setInterval(()=>{
+  axios.get('https://google.com').then(()=>{
+    console.log('req successful');
+  }).catch(()={
+    console.log('error');
+  })
+},120000);
 
 
 
