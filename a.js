@@ -55,8 +55,10 @@ app.post('/', upload.single('file'), (req, res) => {
     return res.status(400).send('No file uploaded.');
   }
 
-  const filePath = path.join(req.file.destination, req.file.filename);
-  
+  const file_path = path.join(req.file.destination, req.file.filename);
+  const flink = req.headers.host;
+
+  res.render('home',{info:`<script>document.getElementById('infoo').innerHTML = '  <div class="p-4 mb-4 text-sm text-green-800 rounded-lg bg-green-50 dark:bg-gray-800 dark:text-green-400" role="alert">Your file has been uploaded successfully.<a href="http://${flink}/${file_path}" class="font-semibold underline">http://${flink}/${file_path}</a></div>'</script>`});
 });
 
 app.get('/about',(req,res)=>{
