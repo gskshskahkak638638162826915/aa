@@ -35,7 +35,7 @@ const storage = multer.diskStorage({
   destination: (req, file, callback) => {
     const folderName = Math.random().toString(36).substring(7);
   
-    const folderPath = path.join('./download', folderName);
+    const folderPath = path.join(__dirname,'download', folderName);
     fs.mkdirSync(folderPath);
     callback(null, folderPath);
   },
@@ -56,10 +56,10 @@ app.post('/', upload.single('file'), (req, res) => {
     return res.status(400).send('No file uploaded.');
   }
 
-  const file_path = path.join(req.file.destination, req.file.filename);
+  const file_path = (path.join(req.file.destination, req.file.filename)).replace(__dirname,'');
   const flink = req.headers.host;
 
-  res.render('home',{info:`<script>document.getElementById('infoo').innerHTML = '  <div class="p-4 mb-4 text-sm text-green-800 rounded-lg bg-green-50 dark:bg-gray-800 dark:text-green-400" role="alert">Your file has been uploaded successfully.<a href="http://${flink}/${file_path}" class="font-semibold underline">http://${flink}/${file_path}</a></div>'</script>`});
+  res.render('home',{info:`<script>document.getElementById('infoo').innerHTML = '  <div class="p-4 mb-4 text-sm text-green-800 rounded-lg bg-green-50 dark:bg-gray-800 dark:text-green-400" role="alert">Your file has been uploaded successfully.<a href="http://${flink}${file_path}" class="font-semibold underline">http://${flink}${file_path}</a></div>'</script>`});
 });
 
 app.get('/about',(req,res)=>{
