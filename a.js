@@ -10,6 +10,7 @@ const axios = require('axios');
 const app = express();
 
 app.set('view engine','ejs');
+app.use(express().static('./download'));
 
 
 (async()=>{
